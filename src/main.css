@@ -1,0 +1,76 @@
+/* See the documentation for how to load in regular weight versions */
+@font-face {
+	font-family: 'Benton';
+	src: url('https://apps.bostonglobe.com/common/font/benton-bold.woff2') format('woff2'), url('https://apps.bostonglobe.com/common/font/benton-bold.woff') format('woff');
+    font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Miller';
+	src: url('https://apps.bostonglobe.com/common/font/miller-bold.woff2') format('woff2'), url('https://apps.bostonglobe.com/common/font/miller-bold.woff') format('woff');
+    font-weight: 600;
+}
+
+/* =========================== */
+/* Globe font stack examples
+/* =========================== */
+
+/* Serif (Miller) */
+/* font-family: 'Miller', Georgia, Times New Roman, Times, serif; */
+/* font-weight: 600; */
+
+/* Sans-serif (Benton) */
+/* font-family: 'Benton', Helvetica, Arial, sans-serif; */
+/* font-weight: 600; */
+
+/* Serif */
+/* font-family: 'Georgia', Times New Roman, Times, serif; */
+
+/* Sans-serif */
+/* font-family: 'Helvetica', Arial, sans-serif; */
+
+/* =========================== */
+/* Graphic styles
+/* =========================== */
+.graphichead {font-family:'BentonSans', Helvetica, Arial, sans-serif; font-size:1.2em;font-weight:bold; display:block; margin-top:30px;}
+.subtitle {font-family:'BentonSans', Helvetica, Arial, sans-serif; font-size:0.9em; line-height:1.4em; margin-top:10px; margin-bottom:15px;}
+.plot{
+	min-height:600px;
+}
+@media (max-width: 600px) {
+	.plot {
+		min-height: 400px;
+	}
+}
+
+#mapid{
+	width: 100vw;
+	min-height: 800px;
+	background-image: url("./assets/grayMap.png");
+	background-repeat: no-repeat;
+	background-position: calc(50% - 10px) calc(50%);
+	position: relative;
+}
+.showNote{
+	font-family: Benton;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	font-size: 1.2rem;
+	z-index: 100;
+	color: black;
+}
+.leaflet-tooltip{
+	animation:fadeOut 0.5s linear 1s 1;
+	animation-fill-mode: forwards;
+	-webkit-animation:fadeOut 0.5s linear 1s 1;
+	-webkit-animation-fill-mode: forwards;
+}
+@keyframes fadeOut{
+	0% { opacity: 1; visibility: visible; }
+	100% { opacity: 0; visibility: hidden; }
+}
+@-webkit-keyframes fadeOut{
+	0% { opacity: 1; visibility: visible; }
+	100% { opacity: 0; visibility: hidden; }
+}
