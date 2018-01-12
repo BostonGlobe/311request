@@ -37,10 +37,6 @@
         .defer(d3.json, './assets/bos_neighborhoods.json')
         .defer(d3.csv, './assets/311_2018.csv', parseCSV)
         .await(function (err, geo, data) {
-            console.log(geo);
-            console.log(data);
-
-
             var streetMap = L.geoJSON(geo, {
                 style: function (d) {
                     return {
@@ -220,6 +216,25 @@
                     }
                 }
             }
+
+            var map2 = L.map('mapid2', {
+                center: [42.323, -71.072],
+                zoom: 12,
+                layers: [streetMap],
+                scrollWheelZoom: false,
+                zoomControl: false,
+                attributionControl: false,
+                doubleClickZoom: false,
+                dragging: false
+            });
+            snowData.forEach(function (t) {
+                L.circle([t.lat, t.lng], {
+                    radius: 2,
+                    color: isSolved(t.close),
+                    opacity: 0.5,
+                    className: 'objCircle2'
+                }).addTo(map2);
+            })
         });
 
     function getRandomNumber() {
@@ -229,6 +244,9 @@
             randomNum.push(j);
         }
         return randomNum;
+    }
+    function isSolved(dt) {
+        return dt? 'steelblue':'red';
     }
 
     function colorType(str) {
@@ -267,8 +285,10 @@
 			type: d['TYPE'],
 			neighborhood: d.neighborhood,
 			date: parseTime(d['open_dt']),
+            close: (d['closed_dt'])?parseTime(d['closed_dt']):null,
 			hour: +(d['open_dt'].split(' ')[1].split(':')[0]),
 			id: +(d['CASE_ENQUIRY_ID'])
+
 		}
     }
 

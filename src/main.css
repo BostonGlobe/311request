@@ -74,3 +74,13 @@
 	0% { opacity: 1; visibility: visible; }
 	100% { opacity: 0; visibility: hidden; }
 }
+
+#mapid2{
+	width: 100vw;
+	min-height: 800px;
+	background-color: white;
+	/*background-image: url("./assets/grayMap.png");*/
+	/*background-repeat: no-repeat;*/
+	/*background-position: calc(50% - 10px) calc(50%);*/
+	position: relative;
+}
